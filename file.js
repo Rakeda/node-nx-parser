@@ -36,7 +36,6 @@ exports.file = function file(pFilename) {
 	console.log('Finished loading file: ' + this.filename);
 	 var diff = process.hrtime(starttime);
 	console.log('Took %d nanoseconds', diff[0] * 1e9 + diff[1]);
-	this.close();
 };
 
 exports.file.prototype = {

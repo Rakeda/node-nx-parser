@@ -48,12 +48,24 @@ exports.node.prototype = {
 			this.children[this.file.get_string(subn.name_id)] = subn;
 		}
 	},
+	GetName: function () {
+		return this.file.get_string(this.name_id);
+	},
 	
+	ChildById: function (pId) {
+		if (pId < 0 || pId >= this.child_count) return null;
+		
+		var name = this.file.GetNodeName(this.first_child_id + pId);
+		return this.Child(name);
+	},
 	Child: function (pName) {
-		if (this.children !== null && this.children.hasOwnProperty(pName)) return this.children[pName];
+		if (this.children !== null && this.children.hasOwnProperty(pName)) {
+			return this.children[pName];
+		}
 		for (var i = 0; i < this.child_count; i++) {
 			var name = this.file.GetNodeName(this.first_child_id + i);
 			if (pName === name) {
+				if (this.children === null) this.children = [];
 				this.children[name] = new node(this.file, this.first_child_id + i);
 				return this.children[name];
 			}

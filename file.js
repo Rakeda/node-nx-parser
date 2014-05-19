@@ -5,10 +5,8 @@ var node = require('./node.js').node;
 exports.file = function file(pFilename) {
 	this.filename = pFilename;
 	var starttime = process.hrtime();
-	console.log('Loading file: ' + this.filename);
 	
 	this.fileHandle = fs.openSync(this.filename, 'rs');
-	console.log('opened ' + this.filename);
 	
 	this.buffer = this.readFilePartially(0, 4 + ((4 + 8) * 4));
 	
@@ -28,14 +26,9 @@ exports.file = function file(pFilename) {
 	
 	this.header.audio_count = this.buffer.readUInt32LE(offset); offset += 4;
 	this.header.audio_offset = this.getInt64(offset); offset += 8;
-	console.log(this.header);
 	
 	this.mainNode = new node(this, 0);
 	this.mainNode.InitializeChildren(); // Initialize first node fully
-	
-	console.log('Finished loading file: ' + this.filename);
-	 var diff = process.hrtime(starttime);
-	console.log('Took %d nanoseconds', diff[0] * 1e9 + diff[1]);
 };
 
 exports.file.prototype = {

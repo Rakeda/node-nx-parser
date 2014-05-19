@@ -1,0 +1,24 @@
+{
+	"name": "nx-parser",
+	"version": "0.1.0",
+	"description": "NX file support for Node.js",
+	"keywords": [
+		"filetype"
+	],
+	"homepage": "https://github.com/diamondo25/node-nx-parser",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/diamondo25/node-nx-parser"
+	},
+	"author": {
+		"name": "Erwin Oegema",
+		"email": "erwin.oegema@gmail.com",
+		"url": "https://github.com/diamondo25"
+	},
+	"dependencies": {
+		"int64-native": "0.3.2"
+	},
+	"main": "nx",
+	"license": "MIT",
+	"readmeFilename": "README.md"
+}

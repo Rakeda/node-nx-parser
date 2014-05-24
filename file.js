@@ -28,8 +28,8 @@ exports.file = function file(pFilename) {
 	this.header.audio_offset = this.getInt64(offset); offset += 8;
 	
 	this.mainNode = new node(this, 0);
-	this.mainNode.InitializeChildren(); // Initialize first node fully
 };
+
 
 exports.file.prototype = {
 	close: function () {
@@ -70,7 +70,7 @@ exports.file.prototype = {
 	get_string: function (pIndex) {
 		var offset = this.getOffset(this.header.string_offset, pIndex);
 		var buffer = this.readFilePartially(offset, 2);
-		var length = Math.min(20, buffer.readUInt16LE(0));
+		var length = buffer.readUInt16LE(0);
 		
 		buffer = this.readFilePartially(offset + 2, length);
 		
@@ -83,8 +83,24 @@ exports.file.prototype = {
 		return this.get_string(buffer.readUInt32LE(0));
 	},
 	
-	
+	// node object functions
+	GetName: function () {
+		return this.filename;
+	},
+
 	Child: function (pName) {
 		return this.mainNode.Child(pName);
+	},
+	
+	ChildById: function (pId) {
+		return this.mainNode.ChildById(pId);
+	},
+	
+	ForEach: function (pCallback) {
+		return this.mainNode.ForEach(pCallback);
+	},
+	
+	GetPath: function (pPath) {
+		return this.mainNode.GetPath(pPath);
 	}
 };

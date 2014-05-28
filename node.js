@@ -24,7 +24,7 @@ exports.node.prototype = {
 		switch (this.type) {
 			case 0: break;
 			case 1: // Int64
-				this.data = new Int64(buffer.readUInt32LE(4), buffer.readUInt32LE(0));
+				this.data = buffer.readInt32LE(0); //new Int64(buffer.readUInt32LE(0), buffer.readUInt32LE(4));
 				break;
 			case 2: // Double
 				this.data = buffer.readDoubleLE(0);

@@ -1,4 +1,4 @@
-var Int64 = require('int64-native');
+var Int64 = require('int64-native-node12');
 
 node = exports.node = function node(pFile, pIndex) {
 	this.file = pFile;

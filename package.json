@@ -16,7 +16,7 @@
 		"url": "https://github.com/diamondo25"
 	},
 	"dependencies": {
-		"int64-native-node12": "sgermain06/node-int64-native-node12"
+		"int64-native": "0.5.2"
 	},
 	"main": "nx",
 	"license": "MIT",

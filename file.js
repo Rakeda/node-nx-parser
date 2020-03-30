@@ -1,4 +1,4 @@
-var Int64 = require('int64-native');
+var Int64 = require('node-int64');
 var fs = require('fs');
 var node = require('./node.js').node;
 
